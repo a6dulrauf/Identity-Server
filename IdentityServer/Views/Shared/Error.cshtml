@@ -1,0 +1,44 @@
+﻿
+<div id="layoutError">
+    <div id="layoutError_content">
+        <main>
+            <div class="container">
+                <div class="row justify-content-center">
+                    <div class="col-lg-6">
+                        <div class="text-center mt-4">
+                            <h1 class="display-1">500</h1>
+                            <p class="lead">Internal Server Error</p>
+                            @if (ViewBag.ErrorTitle == null)
+                            {
+                                <h3>
+                                    An error occured while processing your request.
+                                    The support team is notified and we are working on the fix
+                                </h3>
+                                <h5>Please contact us on www.nisshinboauto.com</h5>
+                            }
+                            else
+                            {
+                                <h1 class="text-danger">@ViewBag.ErrorTitle</h1>
+                                <h6 class="text-danger">@ViewBag.ErrorMessage</h6>
+                            }
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+    <div id="layoutError_footer">
+        <footer class="py-4 bg-light mt-auto">
+            <div class="container-fluid">
+                <div class="d-flex align-items-center justify-content-between small">
+                    <div class="text-muted">Copyright &copy;  Nami Digital Transformation 2020</div>
+                    <div>
+                        <a href="#">Privacy Policy</a>
+                        &middot;
+                        <a href="#">Terms &amp; Conditions</a>
+                    </div>
+                </div>
+            </div>
+        </footer>
+    </div>
+</div>

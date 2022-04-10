@@ -1,0 +1,40 @@
+﻿@model LoginViewModel
+
+@{
+    ViewData["Title"] = "Login";
+}
+<link href="~/css/loginStyles.css" rel="stylesheet" />
+<section class="form-01-main">
+    <div class="form-cover">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="form-sub-main">
+                        <div class="_main_head_as">
+                            <a>
+                                <img src="~/assets/img/vector.png">
+                            </a>
+                        </div>
+                        <div class="form-group">
+                            <b style="color:white;font-size:30px">WEB NAVIGATOR</b>
+                        </div>
+                        <form asp-controller="Account" asp-action="Login" asp-route-returnUrl="@Model.ReturnUrl" method="post">
+                            <div class="form-group">
+                                <input asp-for="@Model.EmployeeId" class="form-control text-center" type="text" style="color:white" placeholder="Enter Employee ID" />
+                                <div asp-validation-summary="All" class="text-danger"></div>
+                            </div>
+                            <div class="form-group">
+                                <div class="btn_uy">
+                                    <button class="btn btn-primary" type="submit" style="width:100%">Login</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+
