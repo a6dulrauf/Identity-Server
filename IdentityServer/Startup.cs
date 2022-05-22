@@ -30,7 +30,7 @@ namespace Nami.DXP.IdentityServer
         {
             string applicationBasePath = System.AppContext.BaseDirectory;
             DirectoryInfo directoryInof = new DirectoryInfo(applicationBasePath);
-            string keyRingPath = Configuration.GetSection("AppKeys").GetValue<string>("keyRingPath");
+            string keyRingPath = Configuration.GetSection("AppKeys").GetValue<string>("KeyRingPath");
             do
             {
                 directoryInof = directoryInof.Parent;
