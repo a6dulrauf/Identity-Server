@@ -59,12 +59,6 @@ namespace Nami.DXP.IdentityServer
             return View("AccessDenied");
         }
 
-        private void HandleWebAppException(WebAppException exception)
-        {
-            ViewBag.ErrorTitle = "Error";
-            ViewBag.ErrorMessage = exception.Message;
-        }
-
         private void HandleException(Exception exception)
         {
             if(exception is WebAppException)

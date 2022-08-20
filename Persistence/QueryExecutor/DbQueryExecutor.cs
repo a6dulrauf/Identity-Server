@@ -33,11 +33,6 @@ namespace Nami.DXP.Persistence
                 _logger.LogError(dbException, string.Empty);
                 throw new WebAppException(ErrorCode.InternalError, "A query executor error occurred.");
             }
-            catch(Exception exception)
-            {
-                _logger.LogError(exception, string.Empty);
-                throw new WebAppException(ErrorCode.InternalError, exception.Message);
-            }
 
             return returnValue;
         }
@@ -60,11 +55,6 @@ namespace Nami.DXP.Persistence
                 _logger.LogError(dbException, string.Empty);
                 throw new WebAppException(ErrorCode.InternalError, "A query executor error occurred.");
             }
-            catch (Exception exception)
-            {
-                _logger.LogError(exception, string.Empty);
-                throw new WebAppException(ErrorCode.InternalError, exception.Message);
-            }
 
             return returnValue;
         }
@@ -84,11 +74,6 @@ namespace Nami.DXP.Persistence
             {
                 _logger.LogError(dbException, string.Empty);
                 throw new WebAppException(ErrorCode.InternalError, "A query executor error occurred.");
-            }
-            catch (Exception exception)
-            {
-                _logger.LogError(exception, string.Empty);
-                throw new WebAppException(ErrorCode.InternalError, exception.Message);
             }
         }
     }
