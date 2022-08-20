@@ -31,13 +31,17 @@ namespace Nami.DXP.IdentityServer
                                                            .Select(v => v.ErrorMessage + " " + v.Exception));
                 return BadRequest(erroMessages);
             }
-            catch (Exception ex)
+            catch (WebAppException webAppException)
             {
-                _logger.LogError(ex, ex.Message);
-                string errorMessage = _config.ExposeInternalError ? ex.Message : ErrorMessages.DefaultErrorMessage;
+                _logger.LogError(webAppException, webAppException.Message);
+                return StatusCode(webAppException.ErrorCode, webAppException.Message);
+            }
+            catch (Exception exception)
+            {
+                _logger.LogError(exception, exception.Message);
+                string errorMessage = _config.ExposeInternalError ? exception.Message : ErrorMessage.DefaultErrorMessage;
                 return StatusCode((int)HttpStatusCode.InternalServerError, errorMessage);
             }
         }
-
     }
 }

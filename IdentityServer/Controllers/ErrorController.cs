@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 using Nami.DXP.Common;
+using System;
 
 namespace Nami.DXP.IdentityServer
 {
@@ -46,11 +47,7 @@ namespace Nami.DXP.IdentityServer
             _logger.LogError($"Message: {exceptionDetails.Error.Message}");
             _logger.LogError($"The path {exceptionDetails.Path} threw an exception {exceptionDetails.Error}");
 
-            if (_config.ExposeInternalError)
-            {
-                ViewBag.ErrorTitle = "Exception";
-                ViewBag.ErrorMessage = exceptionDetails.Error.Message;
-            }
+            HandleException(exceptionDetails.Error);
 
             return View("Error");
         }
@@ -60,6 +57,29 @@ namespace Nami.DXP.IdentityServer
         public IActionResult AccessDenied()
         {
             return View("AccessDenied");
+        }
+
+        private void HandleWebAppException(WebAppException exception)
+        {
+            ViewBag.ErrorTitle = "Error";
+            ViewBag.ErrorMessage = exception.Message;
+        }
+
+        private void HandleException(Exception exception)
+        {
+            if(exception is WebAppException)
+            {
+                ViewBag.ErrorTitle = "Error";
+                ViewBag.ErrorMessage = exception.Message;
+            }
+            else
+            {
+                if (_config.ExposeInternalError)
+                {
+                    ViewBag.ErrorTitle = "Exception";
+                    ViewBag.ErrorMessage = exception.Message;
+                }
+            }
         }
     }
 }
