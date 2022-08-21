@@ -70,7 +70,7 @@ namespace Nami.DXP.IdentityServer
             {
                 if (_config.ExposeInternalError)
                 {
-                    ViewBag.ErrorTitle = "Exception";
+                    ViewBag.ErrorTitle = "Error";
                     ViewBag.ErrorMessage = exception.Message;
                 }
             }
