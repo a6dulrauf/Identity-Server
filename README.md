@@ -1,2 +1,2 @@
 # Identity Server
-SSO for Nami Digital Transformation Web Apps
+Cookie-Based Single Sign-On (SSO) for Multiple ASP.NET Core MVC Applications.
